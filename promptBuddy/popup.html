@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptBuddy</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body class="popup-page">
+  <div class="container chat-container">
+    <header class="chat-header">
+      <h1>PromptBuddy</h1>
+      <a href="#" class="settings-link" id="settingsLink" title="Settings">⚙️</a>
+    </header>
+
+    <div class="chat-messages" id="chatMessages">
+      <!-- Messages will be added here dynamically -->
+    </div>
+
+    <div class="chat-input-container">
+      <div id="statusMessage" class="status-message" style="display: none;">good</div>
+      <div class="input-wrapper">
+        <div class="input-wrapper-top">
+          <textarea id="originalPrompt" class="chat-input"
+            placeholder="enter prompt(Press Enter to send, Shift+Enter for new line)" rows="1"></textarea>
+        </div>
+        <div class="input-wrapper-bottom">
+          <div class="mode-selector">
+            <button class="mode-btn">+</button>
+            <div class="mode-menu">
+              <div class="mode-item" data-mode="general">🧠 General</div>
+              <div class="mode-item" data-mode="development">💻 Development</div>
+              <div class="mode-item" data-mode="image">🎨 Image</div>
+            </div>
+          </div>
+          <div class="input-wrapper-bottom-right">
+            <div class="model-selector">
+              <button class="model-btn"><i class="ri-arrow-up-s-line"></i></button>
+              <div class="model-menu">
+                <div class="model-item" data-model="Gemini">🧠 Gemini</div>
+                <div class="model-item" data-model="ChatGPT">💻 ChatGPT</div>
+                <div class="model-item" data-model="Claude">🎨 Claude</div>
+              </div>
+            </div>
+            <button id="enhanceBtn" class="send-button" type="button" title="Send message">
+              <i class="ri-send-plane-2-fill"></i>
+              <i class="ri-mic-2-fill"></i>
+            </button>
+            <div id="voiceIndicator" class="voice-indicator" style="display:none;">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

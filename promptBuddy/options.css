@@ -1,0 +1,227 @@
+/* ===============================
+   GLOBAL
+================================ */
+:root {
+    --bg-primary: #f9fafb;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f3f4f6;
+
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+
+    --border-color: #e5e7eb;
+}
+
+.dark-mode {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #262626;
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+
+    --border-color: #2d2d2d;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+}
+
+body.options-page {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+
+/* ===============================
+     MAIN CONTAINER
+  ================================ */
+.options-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 24px;
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* ===============================
+     TWO COLUMN DASHBOARD
+  ================================ */
+#settingsForm {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+}
+
+/* ===============================
+     CARD STYLE
+  ================================ */
+.form-group,
+.api-key-instructions,
+.info-section {
+    background: var(--bg-secondary);
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid var(--border-color);
+}
+
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group small {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    display: block;
+}
+
+/* ===============================
+     INPUTS
+  ================================ */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #10a37f;
+    outline: none;
+}
+
+/* ===============================
+     LEFT COLUMN
+  ================================ */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Hide all provider instructions by default */
+.provider-card {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+}
+
+
+.provider-card.active {
+    display: block;
+}
+
+.provider-card h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* ===============================
+     RIGHT COLUMN
+  ================================ */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 3-column compact grid */
+.compact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* ===============================
+     SLIDER
+  ================================ */
+.slider {
+    width: 100%;
+    margin-top: 8px;
+    accent-color: #10a37f;
+}
+
+/* ===============================
+     BUTTONS
+  ================================ */
+.button-group {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #10a37f;
+    color: white;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+}
+
+/* ===============================
+     INFO SECTION
+  ================================ */
+.info-section {
+    grid-column: span 2;
+}
+
+.info-section h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.info-section p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ===============================
+     RESPONSIVE
+  ================================ */
+@media (max-width: 900px) {
+    #settingsForm {
+        grid-template-columns: 1fr;
+    }
+
+    .compact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group,
+    .info-section {
+        grid-column: span 1;
+    }
+}

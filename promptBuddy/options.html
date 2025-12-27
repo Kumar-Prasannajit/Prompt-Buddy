@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PromptBuddy Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+
+<body class="options-page">
+  <div class="container options-container">
+    <header>
+      <h1>PromptBuddy Settings</h1>
+    </header>
+
+    <form id="settingsForm">
+
+      <!-- ================= LEFT COLUMN ================= -->
+      <div class="left-column">
+
+        <!-- Model -->
+        <div class="form-group">
+          <label for="model">AI Model</label>
+          <select id="model" name="model" required>
+            <option value="">Select a model</option>
+            <option value="openai">ChatGPT (OpenAI)</option>
+            <option value="gemini">Gemini (Google)</option>
+            <option value="claude">Claude (Anthropic)</option>
+          </select>
+          <small>Select the AI provider</small>
+        </div>
+
+        <!-- API Key -->
+        <div class="form-group">
+          <label for="apiKey">API Key</label>
+          <input type="password" id="apiKey" name="apiKey" placeholder="Enter your API key" required />
+          <small>
+            Stored locally only.
+            <a href="#" id="toggleVisibility" class="link">Show / Hide</a>
+          </small>
+        </div>
+
+        <!-- API Instructions -->
+        <div class="api-key-instructions">
+
+          <div class="provider-card" data-provider="openai">
+            <h4>🔵 OpenAI (ChatGPT)</h4>
+            <ol>
+              <li>Visit OpenAI API Keys</li>
+              <li>Create a new secret key</li>
+              <li>Copy and paste it above</li>
+            </ol>
+            <a href="https://platform.openai.com/api-keys" target="_blank">
+              https://platform.openai.com/api-keys
+            </a>
+          </div>
+
+          <div class="provider-card" data-provider="gemini">
+            <h4>🟢 Google Gemini</h4>
+            <ol>
+              <li>Visit Google AI Studio</li>
+              <li>Generate an API key</li>
+              <li>Paste it above</li>
+            </ol>
+            <a href="https://makersuite.google.com/app/apikey" target="_blank">
+              https://makersuite.google.com/app/apikey
+            </a>
+          </div>
+
+          <div class="provider-card" data-provider="claude">
+            <h4>🟣 Anthropic Claude</h4>
+            <ol>
+              <li>Open Anthropic Console</li>
+              <li>Create an API key</li>
+              <li>Paste it above</li>
+            </ol>
+            <a href="https://console.anthropic.com/settings/keys" target="_blank">
+              https://console.anthropic.com/settings/keys
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= RIGHT COLUMN ================= -->
+      <div class="right-column">
+
+        <!-- 3-column compact row -->
+        <div class="compact-grid">
+
+          <div class="form-group">
+            <label for="tone">Tone</label>
+            <select id="tone" name="tone">
+              <option value="professional">Professional</option>
+              <option value="concise">Concise</option>
+              <option value="friendly">Friendly</option>
+              <option value="formal">Formal</option>
+              <option value="casual">Casual</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="maxWords">Max Words</label>
+            <input type="number" id="maxWords" name="maxWords" placeholder="500" min="50" max="5000" />
+          </div>
+
+          <div class="form-group">
+            <label for="theme">Theme</label>
+            <select id="theme" name="theme">
+              <option value="system">System</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Font Size Slider -->
+        <div class="form-group">
+          <label for="fontSize">
+            Font Size: <span id="fontSizeValue">14</span>px
+          </label>
+          <input type="range" id="fontSize" name="fontSize" min="10" max="24" value="14" class="slider" />
+        </div>
+        <!-- STATUS MESSAGE -->
+        <div id="statusMessage" class="status-message" style="display:none;"></div>
+
+      </div>
+
+      <!-- ================= BUTTONS ================= -->
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+        <button type="button" id="clearBtn" class="btn btn-secondary">
+          Clear All
+        </button>
+      </div>
+
+    </form>
+
+    <!-- ================= PRIVACY ================= -->
+    <div class="info-section">
+      <h3>Privacy & Security</h3>
+      <p>
+        Your API keys and settings are stored locally in your browser and
+        are never shared with any third-party service except the selected AI provider.
+      </p>
+    </div>
+
+  </div>
+
+  <script src="options.js"></script>
+</body>
+
+</html>

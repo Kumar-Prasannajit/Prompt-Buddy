@@ -1,0 +1,367 @@
+/* ===============================
+   CSS VARIABLES
+=============================== */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f7f8;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --bubble-user: #4f46e5;
+  --bubble-ai: #f1f1f3;
+  --error: #dc2626;
+  --success: #16a34a;
+  --radius: 16px;
+  --base-font-size: 14px;
+}
+
+/* ===============================
+   DARK MODE (used by JS)
+=============================== */
+.dark-mode {
+  --bg: #020617;
+  --bg-soft: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --bubble-ai: #020617;
+}
+
+/* ===============================
+   GLOBAL
+=============================== */
+* {
+  box-sizing: border-box;
+}
+
+body.popup-page {
+  margin: 0;
+  width: 380px;
+  height: 560px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--base-font-size);
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   HEADER
+=============================== */
+.chat-header {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.settings-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.settings-link:hover {
+  color: var(--accent);
+}
+
+/* ===============================
+   CHAT AREA
+=============================== */
+.chat-messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+/* ===============================
+   MESSAGES (JS relies on these)
+=============================== */
+.message {
+  max-width: 85%;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.2s ease;
+}
+
+.message-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message-content {
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+/* USER */
+.user-message {
+  margin-left: auto;
+}
+
+.user-message .message-content {
+  background: var(--bubble-user);
+  color: #fff;
+}
+
+/* ASSISTANT */
+.assistant-message {
+  margin-right: auto;
+}
+
+.assistant-message .message-content {
+  background: var(--bubble-ai);
+}
+
+/* SYSTEM */
+.system-message {
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+.system-message .message-content {
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ERROR */
+.error-message .message-content {
+  background: #fee2e2;
+  color: var(--error);
+}
+
+/* TIME */
+.message-time {
+  font-size: 11px;
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+/* ===============================
+   TYPING INDICATOR
+=============================== */
+.typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: var(--muted);
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* ===============================
+   INPUT CONTAINER
+=============================== */
+.chat-input-container {
+  padding: 10px 12px 14px;
+  background: var(--bg);
+}
+
+.input-wrapper {
+  background: var(--bubble-ai);
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+/* TEXTAREA */
+.chat-input {
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.chat-input::placeholder {
+  color: var(--muted);
+}
+
+/* ===============================
+   INPUT BOTTOM ROW
+=============================== */
+.input-wrapper-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.input-wrapper-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===============================
+   ICON BUTTONS (NO BORDERS)
+=============================== */
+.mode-btn,
+.model-btn,
+.send-button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.mode-btn:hover,
+.model-btn:hover,
+.send-button:hover {
+  color: var(--accent);
+}
+
+/* ===============================
+   DROPDOWNS – SAFE & CLIPPED-PROOF
+=============================== */
+
+.mode-selector,
+.model-selector {
+  position: relative;
+}
+
+/* Shared dropdown styles */
+.mode-menu,
+.model-menu {
+  position: absolute;
+  bottom: 44px;              /* 🔑 Move higher */
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  display: none;
+  overflow: hidden;
+  min-width: 160px;
+  z-index: 999;              /* 🔑 Above everything */
+  padding: 6px 0;
+}
+
+/* Left-aligned (mode menu) */
+.mode-menu {
+  left: 0;
+}
+
+/* Right-aligned (model menu) */
+.model-menu {
+  right: 0;
+}
+
+.mode-menu,
+.model-menu {
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.mode-menu.show,
+.model-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* JS toggle */
+.mode-menu.show,
+.model-menu.show {
+  display: block;
+}
+
+/* Items */
+.mode-item,
+.model-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+/* Hover */
+.mode-item:hover,
+.model-item:hover {
+  background: var(--bg-soft);
+}
+
+/* ===============================
+   STATUS MESSAGE
+=============================== */
+.status-message {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.status-success { color: var(--success); }
+.status-error { color: var(--error); }
+
+/* 🎤 Voice Recording Indicator */
+.voice-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.voice-indicator span {
+  width: 6px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 4px;
+  animation: pulse 0.75s infinite ease-in-out;
+}
+
+.voice-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.voice-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.3); }
+}
+
+/* Mic active style */
+.send-button.recording i {
+  color: var(--accent);
+  animation: micGlow 1s infinite alternate;
+}
+
+@keyframes micGlow {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.2); }
+}
