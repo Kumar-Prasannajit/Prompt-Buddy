@@ -92,7 +92,7 @@ Create the following files in the extension root directory:
 ---
 
 ### 3. Configure PromptBuddy
-1. Click the PromptBuddy icon in the Chrome toolbar
+1. Click the PromptBuddy icon in the Chrome toolbar (Extension icon)
 2. Open **Settings**
 3. Select your AI provider:
    - OpenAI
@@ -121,7 +121,7 @@ You’ll need an API key from your chosen provider:
   https://platform.openai.com/api-keys
 
 - **Google Gemini:**  
-  https://makersuite.google.com/app/apikey
+  https://makersuite.google.com/app/apikey (✅Recomended)
 
 - **Anthropic Claude:**  
   https://console.anthropic.com/settings/keys
